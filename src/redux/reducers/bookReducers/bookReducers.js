@@ -2,11 +2,13 @@ import { TYPES } from "../../actions";
 import { RESULTS_PER_PAGE } from "../../../constants";
 
 const onBookApiSuccess = (state, response) => {
+  const numberOfPages = Math.floor(response.count / RESULTS_PER_PAGE) + (response.count % RESULTS_PER_PAGE === 0 ? 0 : 1);
+
   return {
     ...state,
     collection: response.books,
     count: response.count,
-    numberOfPages: response.count % RESULTS_PER_PAGE + 1,
+    numberOfPages,
   }
 }
 
