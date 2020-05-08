@@ -1,5 +1,5 @@
 import React from 'react';
-import BookPagination from './components/BookPagination.jsx';
+import BookLayout from './components/BookLayout.jsx';
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,7 +10,8 @@ import {
 export const AppRouter = () => (
   <Router>
     <Switch>
-      <Route path="/:page" children={<BookPagination />} />
+      <Route path="/" children={<BookLayout />} />
+      <Route path="/page-:page" children={<BookLayout />} />
     </Switch>
   </Router>
 );

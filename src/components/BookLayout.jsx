@@ -29,13 +29,13 @@ Header.defaultProps = {
   title: '',
 }
 
-export const BookPagination = ({
+export const BookLayout = ({
   loadBookApi,
 }) => {
   const { page } = useParams();
 
   useEffect(() => {
-    loadBookApi(page);
+    loadBookApi(page || '1');
   }, [loadBookApi, page]);
 
   return (
@@ -49,8 +49,8 @@ export const BookPagination = ({
   );
 };
 
-BookPagination.propTypes = {
+BookLayout.propTypes = {
   loadBookApi: PropTypes.func.isRequired,
 }
 
-export default connect(null, mapDispatchToProps)(BookPagination);
+export default connect(null, mapDispatchToProps)(BookLayout);
