@@ -40,7 +40,7 @@ export const BookLayout = ({
 
   return (
     <Container fluid="xl">
-      <Jumbotron >
+      <Jumbotron className="pb-0">
         <Header title="Books from Greece"/>
         <BooksList />
         <Paginator />

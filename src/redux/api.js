@@ -1,8 +1,10 @@
+import { RESULTS_PER_PAGE } from '../constants';
+
 const getOptions = (pageNumber) => ({
   method: 'POST',
   body: JSON.stringify({
     page: pageNumber,
-    itemsPerPage: 20,
+    itemsPerPage: RESULTS_PER_PAGE,
     filters: [],
   }),
   headers: {

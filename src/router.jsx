@@ -10,8 +10,8 @@ import {
 export const AppRouter = () => (
   <Router>
     <Switch>
-      <Route path="/" children={<BookLayout />} />
       <Route path="/page-:page" children={<BookLayout />} />
+      <Route path="/" children={<BookLayout />} />
     </Switch>
   </Router>
 );
