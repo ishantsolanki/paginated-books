@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
+import Spinner from 'react-bootstrap/Spinner';
+import Alert from 'react-bootstrap/Alert';
+
 import { STATUSES } from '../constants';
 
 const mapStateToBookApiProps = (state) => ({
@@ -14,13 +18,20 @@ export const StatusHandler = ({
   return (
     <>
       {status === STATUSES.PENDING && (
-        <span>Loading</span>
+        <p className="d-flex justify-content-center p-4">
+          <Spinner animation="border" variant="primary" size="lg" />
+        </p>
       )}
 
       {status === STATUSES.RESOLVED &&  children}
 
       {status === STATUSES.ERROR && (
-        <span>Error occured. Please check your internet connection. Alternatively you can <a href="/">refresh</a> the page</span>
+        <p className="d-flex justify-content-center p-4">
+          <Alert variant="secondary">
+            <Alert.Heading>An error occured while getting books.</Alert.Heading>
+            Try <a href="/">refreshing</a> the page.
+          </Alert>
+        </p>
       )}
     </>
   )
