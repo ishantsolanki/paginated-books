@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 
 import { loadBookApi } from '../redux/actions';
 
+import BooksList from '../components/BooksList';
+
 const mapDispatchToProps = {
   loadBookApi
 };
@@ -18,7 +20,10 @@ export const BookPagination = ({
   }, [loadBookApi, page]);
 
   return (
-    <div>Book Pagination - Page {page}</div>
+    <>
+      <div>Book Pagination - Page {page}</div>
+      <BooksList />
+    </>
   );
 };
 

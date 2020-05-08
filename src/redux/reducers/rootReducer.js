@@ -4,5 +4,5 @@ import bookReducers from './bookReducers/bookReducers';
 
 export default combineReducers({
   pagination: paginationReducers,
-  book: bookReducers,
+  books: bookReducers,
 });
