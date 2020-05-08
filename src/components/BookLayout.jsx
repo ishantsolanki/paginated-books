@@ -7,6 +7,7 @@ import Container from 'react-bootstrap/Container';
 
 import { loadBookApi } from '../redux/actions';
 
+import { BookApiStatusHandler } from '../components/StatusHandler';
 import BooksList from '../components/BooksList';
 import Paginator from '../components/Paginator';
 
@@ -42,8 +43,12 @@ export const BookLayout = ({
     <Container fluid="xl">
       <Jumbotron className="pb-0">
         <Header title="Books from Greece"/>
-        <BooksList />
-        <Paginator />
+        <BookApiStatusHandler>
+        <>
+          <BooksList />
+          <Paginator />
+          </>
+        </BookApiStatusHandler>
       </Jumbotron>
     </Container>
   );

@@ -21,8 +21,8 @@ export const Paginator = ({
   let items = [];
   for (let number = page - 1 || 1; number <= numberOfPages && number <= page + 1; number++) {
     items.push(
-      <LinkContainer to={`/page-${number}`}>
-        <Pagination.Item key={number} active={number === page}>
+      <LinkContainer key={number} to={`/page-${number}`}>
+        <Pagination.Item active={number === page}>
           {number}
         </Pagination.Item>
       </LinkContainer>
