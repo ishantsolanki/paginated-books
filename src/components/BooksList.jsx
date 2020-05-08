@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 import BookCard from './BookCard';
 
@@ -11,19 +12,20 @@ const mapStateToProps = (state) => ({
 export const BooksList = ({
   books,
 }) => (
-  <div>
+  <ListGroup>
     {books.map(book => (
-      <BookCard
-        key={book.id}
-        author={book.book_author}
-        pages={book.book_pages}
-        publicationCity={book.book_publication_city}
-        publicationCountry={book.book_publication_country}
-        publicationYear={book.book_publication_year}
-        title={book.book_title}
-      />
+      <ListGroup.Item key={book.id}>
+        <BookCard
+          author={book.book_author}
+          pages={book.book_pages}
+          publicationCity={book.book_publication_city}
+          publicationCountry={book.book_publication_country}
+          publicationYear={book.book_publication_year}
+          title={book.book_title}
+        />
+      </ListGroup.Item>
     ))}
-  </div>
+  </ListGroup>
 );
 
 BooksList.propTypes = {

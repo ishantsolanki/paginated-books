@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Jumbotron from 'react-bootstrap/Jumbotron';
+import Container from 'react-bootstrap/Container';
 
 import { loadBookApi } from '../redux/actions';
 
@@ -38,11 +39,13 @@ export const BookPagination = ({
   }, [loadBookApi, page]);
 
   return (
-    <Jumbotron>
-      <Header title="Books from Greece"/>
-      <BooksList />
-      <Paginator />
-    </Jumbotron>
+    <Container fluid="xl">
+      <Jumbotron >
+        <Header title="Books from Greece"/>
+        <BooksList />
+        <Paginator />
+      </Jumbotron>
+    </Container>
   );
 };
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Card from 'react-bootstrap/Card'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
 
 export const BookCard = ({
   author,
@@ -10,29 +11,21 @@ export const BookCard = ({
   publicationYear,
   title,
 }) => (
-  <Card>
-    <Card.Body>
-      <Card.Title>{title}</Card.Title>
-      <Card.Text>
-        {author.join()}
-      </Card.Text>
-      {!!pages && (
-        <Card.Text>
-          Pages: {pages}
-        </Card.Text>
-      )}
-      {(!!publicationCity || !!publicationCountry) && (
-        <Card.Text>
-          {[publicationCity, publicationCountry].filter(Boolean).join(', ')}
-        </Card.Text>
-      )}
-      {!!publicationYear && (
-        <Card.Text>
-          {publicationYear}
-        </Card.Text>
-      )}
-    </Card.Body>
-  </Card>
+  <Container>
+    <Row><h4>{title}</h4></Row>
+
+    <Row>By {author.join()} {!!publicationYear && `- ${publicationYear}`}</Row>
+
+    {!!pages && (
+      <Row>{pages} pages</Row>
+    )}
+
+    {(!!publicationCity || !!publicationCountry) && (
+      <Row>
+        {[publicationCity, publicationCountry].filter(Boolean).join(', ')}
+      </Row>
+    )}
+  </Container>
 );
 
 BookCard.propTypes = {
@@ -40,7 +33,7 @@ BookCard.propTypes = {
   title: PropTypes.string,
   publicationCity: PropTypes.string,
   publicationCountry: PropTypes.string,
-  publicationYear: PropTypes.number,
+  publicationYear: PropTypes.string,
   pages: PropTypes.number,
 };
 

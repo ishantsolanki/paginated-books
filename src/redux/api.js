@@ -17,12 +17,12 @@ export const getFakeBooksApi = async () => {
     return {
       books: [
         {
-          book_author: ['xxxxxx'],
-          book_pages: 23,
-          book_publication_city: 'xxxxxx',
-          book_publication_country: 'xxxxxx',
-          book_publication_year: 'xxxxxx',
-          book_title: 'xxxxxx',
+          book_author: ['Sally Rooney'],
+          book_pages: 290,
+          book_publication_city: 'New York',
+          book_publication_country: 'United States',
+          book_publication_year: '2011',
+          book_title: 'Normal People',
           id: 1,
         },
         {
