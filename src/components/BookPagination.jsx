@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Jumbotron from 'react-bootstrap/Jumbotron';
@@ -19,6 +20,14 @@ export const Header = ({ title }) => (
   </>
 );
 
+Header.propTypes = {
+  title: PropTypes.node,
+};
+
+Header.defaultProps = {
+  title: '',
+}
+
 export const BookPagination = ({
   loadBookApi,
 }) => {
@@ -36,5 +45,9 @@ export const BookPagination = ({
     </Jumbotron>
   );
 };
+
+BookPagination.propTypes = {
+  loadBookApi: PropTypes.func.isRequired,
+}
 
 export default connect(null, mapDispatchToProps)(BookPagination);

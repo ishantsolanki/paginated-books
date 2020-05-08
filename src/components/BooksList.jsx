@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import BookCard from './BookCard';
@@ -24,5 +25,17 @@ export const BooksList = ({
     ))}
   </div>
 );
+
+BooksList.propTypes = {
+  books: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    author: PropTypes.arrayOf(PropTypes.string),
+    pages: PropTypes.number,
+    publicationCity: PropTypes.string,
+    publicationCountry: PropTypes.string,
+    publicationYear: PropTypes.number,
+    title: PropTypes.string,
+  })),
+}
 
 export default connect(mapStateToProps)(BooksList);

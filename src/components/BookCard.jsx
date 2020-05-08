@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card'
 
 export const BookCard = ({
@@ -13,19 +14,41 @@ export const BookCard = ({
     <Card.Body>
       <Card.Title>{title}</Card.Title>
       <Card.Text>
-        {author}
+        {author.join()}
       </Card.Text>
-      <Card.Text>
-        Pages: {pages}
-      </Card.Text>
+      {!!pages && (
+        <Card.Text>
+          Pages: {pages}
+        </Card.Text>
+      )}
       <Card.Text>
         {publicationCity}, {publicationCountry}
       </Card.Text>
-      <Card.Text>
-        {publicationYear}
-      </Card.Text>
+      {!!publicationYear && (
+        <Card.Text>
+          {publicationYear}
+        </Card.Text>
+      )}
     </Card.Body>
   </Card>
 );
+
+BookCard.propTypes = {
+  author: PropTypes.arrayOf(PropTypes.string),
+  title: PropTypes.string,
+  publicationCity: PropTypes.string,
+  publicationCountry: PropTypes.string,
+  publicationYear: PropTypes.number,
+  pages: PropTypes.number,
+};
+
+BookCard.defaultProps = {
+  author: [],
+  title: '',
+  publicationCity: '',
+  publicationCountry: '',
+  pubicationsYear: null,
+  pages: null,
+};
 
 export default BookCard;
