@@ -15,8 +15,8 @@ export const loadBookApi = (pageNumber) => {
   return async (dispatch) => {
     dispatch(loadBookApiStart());
     try {
-      const responseJson = await api.getFakeBooksApi(pageNumber);
-      // const responseJson = await response.json();
+      const response = await api.getBooksApi(pageNumber);
+      const responseJson = await response.json();
       return dispatch(loadBookApiSuccess(responseJson));
     }
     catch (error) {
