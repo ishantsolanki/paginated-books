@@ -21,9 +21,11 @@ export const BookCard = ({
           Pages: {pages}
         </Card.Text>
       )}
-      <Card.Text>
-        {publicationCity}, {publicationCountry}
-      </Card.Text>
+      {(!!publicationCity || !!publicationCountry) && (
+        <Card.Text>
+          {[publicationCity, publicationCountry].filter(Boolean).join(', ')}
+        </Card.Text>
+      )}
       {!!publicationYear && (
         <Card.Text>
           {publicationYear}
@@ -45,8 +47,8 @@ BookCard.propTypes = {
 BookCard.defaultProps = {
   author: [],
   title: '',
-  publicationCity: '',
-  publicationCountry: '',
+  publicationCity: null,
+  publicationCountry: null,
   pubicationsYear: null,
   pages: null,
 };
