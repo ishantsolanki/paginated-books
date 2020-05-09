@@ -44,10 +44,8 @@ export const BookLayout = ({
       <Jumbotron className="pb-0">
         <Header title="Books from Greece"/>
         <BookApiStatusHandler>
-        <>
           <BooksList />
           <Paginator />
-          </>
         </BookApiStatusHandler>
       </Jumbotron>
     </Container>
