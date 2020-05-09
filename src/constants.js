@@ -5,5 +5,3 @@ export const STATUSES = {
   RESOLVED: 'RESOLVED',
   ERROR: 'ERROR',
 };
-
-export const BOOK_API_STATUS = {...STATUSES};
