@@ -1,18 +1,8 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import { MemoryRouter, Route } from 'react-router';
+
+import { renderWithRouter } from '../testUtils';
 
 import { Paginator } from './Paginator';
-
-const renderWithRouter = (component, path, initialEntries = "") => {
-  return render (
-  <MemoryRouter initialEntries={[initialEntries]}>
-    <Route path={path}>
-      {component}
-    </Route>
-  </MemoryRouter>
-  );
-}
 
 describe('Paginator', () => {
   describe('render', () => {
