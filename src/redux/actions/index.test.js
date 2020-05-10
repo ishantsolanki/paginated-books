@@ -20,27 +20,37 @@ describe('actions', () => {
     });
   });
 
-  describe('loadBookApi', () => {
-    it('should dispatch loadBookApiStart action', () => {
-      const dispatchMock = jest.fn();
+  describe('onBookFilterInput', () => {
+    it('should return the correct action', () => {
+      expect(actions.onBookFilterInput('value')).toEqual({ type: actions.TYPES.FILTER_BOOK_CHANGE, value: 'value' });
+    });
+  });
 
-      actions.loadBookApi(5)(dispatchMock);
+  describe('loadBookApi', () => {
+    it('should dispatch loadBookApiStart action', async () => {
+      const dispatchMock = jest.fn();
+      jest.spyOn(api, 'getBooksApi').mockResolvedValue({ json: () => 'yay' });
+
+      await actions.loadBookApi(5)(dispatchMock, jest.fn());
 
       expect(dispatchMock).toHaveBeenCalledWith({ type: actions.TYPES.LOAD_BOOK_API_START });
     });
 
     it('should dispatch loadBookApiSuccess action', async () => {
       const dispatchMock = jest.fn();
+      const getStateMock = jest.fn();
       jest.spyOn(api, 'getBooksApi').mockResolvedValue({ json: () => 'yay' });
-      await actions.loadBookApi(5)(dispatchMock);
+
+      await actions.loadBookApi(5)(dispatchMock, getStateMock);
 
       expect(dispatchMock).toHaveBeenCalledWith({ type: actions.TYPES.LOAD_BOOK_API_SUCCESS, response: 'yay' });
     });
 
     it('should dispatch loadBookApiError action', async () => {
       const dispatchMock = jest.fn();
+      const getStateMock = jest.fn();
       jest.spyOn(api, 'getBooksApi').mockReturnValue(Promise.reject('error'));
-      await actions.loadBookApi(5)(dispatchMock);
+      await actions.loadBookApi(5)(dispatchMock, getStateMock);
 
       expect(dispatchMock).toHaveBeenCalledWith({ type: actions.TYPES.LOAD_BOOK_API_ERROR, error: 'error' });
     });
