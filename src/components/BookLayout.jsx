@@ -10,10 +10,15 @@ import { loadBookApi } from '../redux/actions';
 import { BookApiStatusHandler } from '../components/StatusHandler';
 import BooksList from '../components/BooksList';
 import Paginator from '../components/Paginator';
+import BookFilter from '../components/BookFilter';
 
 const mapDispatchToProps = {
   loadBookApi
 };
+
+const mapStateToProps = (state) => ({
+  searchParam: state.books.searchParam,
+});
 
 export const Header = ({ title }) => (
   <>
@@ -32,17 +37,19 @@ Header.defaultProps = {
 
 export const BookLayout = ({
   loadBookApi,
+  searchParam,
 }) => {
   const { page } = useParams();
 
   useEffect(() => {
     loadBookApi(page || '1');
-  }, [loadBookApi, page]);
+  }, [loadBookApi, page, searchParam]);
 
   return (
     <Container fluid="xl">
       <Jumbotron className="pb-0">
         <Header title="Books from Greece"/>
+        <BookFilter />
         <BookApiStatusHandler>
           <BooksList />
           <Paginator />
@@ -54,6 +61,7 @@ export const BookLayout = ({
 
 BookLayout.propTypes = {
   loadBookApi: PropTypes.func.isRequired,
+  searchParam: PropTypes.string,
 }
 
-export default connect(null, mapDispatchToProps)(BookLayout);
+export default connect(mapStateToProps, mapDispatchToProps)(BookLayout);

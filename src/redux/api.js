@@ -1,29 +1,29 @@
 import { RESULTS_PER_PAGE } from '../constants';
 
-const getOptions = (pageNumber) => ({
+const getOptions = (pageNumber, searchParam) => ({
   method: 'POST',
   body: JSON.stringify({
     page: pageNumber,
     itemsPerPage: RESULTS_PER_PAGE,
-    filters: [],
+    filters: !!searchParam ? [{ type: 'all', values:[searchParam]}] : [],
   }),
   headers: {
       'Content-Type': 'application/json'
   }
 });
 
-export const getBooksApi = (pageNumber) => fetch('http://nyx.vima.ekt.gr:3000/api/books', getOptions(pageNumber));
+export const getBooksApi = (pageNumber, searchParam) => fetch('http://nyx.vima.ekt.gr:3000/api/books', getOptions(pageNumber, searchParam));
 
-export const getFakeBooksApi = async () => {
+export const getFakeBooksApi = async (pageNumber, searchParam) => {
     await new Promise(resolve => setTimeout(resolve, 2000));
     return {
       books: [
         {
-          book_author: ['Sally Rooney'],
+          book_author: ['Sally Rooney ' + searchParam],
           book_pages: 290,
           book_publication_city: 'New York',
           book_publication_country: 'United States',
-          book_publication_year: '2011',
+          book_publication_year: pageNumber,
           book_title: 'Normal People',
           id: 1,
         },

@@ -13,6 +13,11 @@ const onBookApiSuccess = (state, response) => {
   }
 }
 
+const onBookFilterChange = (state, value) => ({
+  ...state,
+  searchParam: value,
+})
+
 const onBookApiStart = (state) => ({
   ...state,
   status: STATUSES.PENDING,
@@ -26,6 +31,7 @@ const onBookApiError = (state) => ({
 const initialState = {
   collection: [],
   status: STATUSES.PENDING,
+  searchParam: '',
 }
 
 export default function (state, action) {
@@ -40,6 +46,7 @@ export default function (state, action) {
     case TYPES.LOAD_BOOK_API_SUCCESS: return onBookApiSuccess(newState, action.response)
     case TYPES.LOAD_BOOK_API_START: return onBookApiStart(newState)
     case TYPES.LOAD_BOOK_API_ERROR: return onBookApiError(newState)
+    case TYPES.FILTER_BOOK_CHANGE: return onBookFilterChange(newState, action.value)
     default: return newState
   }
 }
