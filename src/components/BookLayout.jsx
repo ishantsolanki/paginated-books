@@ -6,6 +6,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
 
 import { loadBookApi } from '../redux/actions';
+import { getBookSearchParams } from '../redux/selectors/book';
 
 import { BookApiStatusHandler } from '../components/StatusHandler';
 import BooksList from '../components/BooksList';
@@ -17,7 +18,7 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = (state) => ({
-  searchParam: state.books.searchParam,
+  searchParam: getBookSearchParams(state),
 });
 
 export const Header = ({ title }) => (

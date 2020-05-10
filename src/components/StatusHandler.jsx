@@ -6,9 +6,10 @@ import Spinner from 'react-bootstrap/Spinner';
 import Alert from 'react-bootstrap/Alert';
 
 import { STATUSES } from '../constants';
+import { getBookApiStatus } from '../redux/selectors/book';
 
 const mapStateToBookApiProps = (state) => ({
-  status: state.books.status,
+  status: getBookApiStatus(state),
 });
 
 export const StatusHandler = ({

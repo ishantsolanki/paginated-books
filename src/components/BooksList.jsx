@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ListGroup from 'react-bootstrap/ListGroup';
 
+import { getBookCollection } from '../redux/selectors/book';
+
 import BookCard from './BookCard';
 
 const mapStateToProps = (state) => ({
-  books: state.books.collection,
+  books: getBookCollection(state),
 });
 
 export const BooksList = ({

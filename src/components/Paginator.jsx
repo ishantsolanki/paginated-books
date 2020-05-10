@@ -4,11 +4,16 @@ import { useParams } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap'
 import { connect } from 'react-redux';
 
+import {
+  getTotalBooksCount,
+  getNumberOfPages,
+} from '../redux/selectors/book';
+
 import Pagination from 'react-bootstrap/Pagination';
 
 export const mapStateToProps = (state) => ({
-  totalBooks: state?.books?.count,
-  numberOfPages: state?.books?.numberOfPages,
+  totalBooks: getTotalBooksCount(state),
+  numberOfPages: getNumberOfPages(state),
 });
 
 

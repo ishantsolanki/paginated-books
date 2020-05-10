@@ -1,4 +1,5 @@
 import api from '../api';
+import { getBookSearchParams } from '../selectors/book';
 
 export const TYPES = {
   LOAD_BOOK_API: 'LOAD_BOOK_API',
@@ -14,7 +15,7 @@ export const loadBookApiError = (error) => ({ type: TYPES.LOAD_BOOK_API_ERROR, e
 
 export const loadBookApi = (pageNumber) => {
   return async (dispatch, getState) => {
-    const searchParam = getState().books.searchParam;
+    const searchParam = getBookSearchParams(getState());
 
     dispatch(loadBookApiStart());
     try {
